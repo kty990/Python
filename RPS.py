@@ -2,6 +2,8 @@ import random as r
 import time as t
 
 option = ["Rock", "Paper", "Scissors"]
+win = [3,1,2]
+lose = [2,3,1]
 
 def isInt(value, boolean):
     """ 
@@ -30,38 +32,18 @@ def main():
             if int(playerC) > 3 or int(playerC) < 1: #Makes sure that the user enters in either rock, paper, or scissors.
                 playerC = "" #Causes loop to restart
     playerC = int(playerC)
-    if c == playerC: #When the player and computer tie.
-        print("You tied with the computer. You both picked [" + option[playerC-1] + "]")
-        print("[1] = Yes, [Anything else] = No")
-        restart = input(" -> ")
-        if restart == "1":
-            main()
-        else:
-            print("Ok. Quitting...")
-            t.sleep(2)
-            quit()
+    if c == win[playerC-1]:
+        print("You won. You picked [" + option[playerC-1] + "] and the computer picked [" + option[c-1] + "]")
+    elif c == lose[playerC-1]:
+        print("You lost. You picked [" + option[playerC-1] + "] and the computer picked [" + option[c-1] + "]") 
     else:
-        if playerC == 1:
-            if c == 2:
-                print("You lost. You picked [" + option[playerC-1] + "] and the computer picked [" + option[c-1] + "]")
-            else:
-                print("You won. You picked [" + option[playerC-1] + "] and the computer picked [" + option[c-1] + "]")
-        if playerC == 2:
-            if c == 3:
-                print("You lost. You picked [" + option[playerC-1] + "] and the computer picked [" + option[c-1] + "]")
-            else:
-                print("You won. You picked [" + option[playerC-1] + "] and the computer picked [" + option[c-1] + "]")
-        if playerC == 3:
-            if c == 1:
-                print("You lost. You picked [" + option[playerC-1] + "] and the computer picked [" + option[c-1] + "]")
-            else:
-                print("You won. You picked [" + option[playerC-1] + "] and the computer picked [" + option[c-1] + "]")
-        print("[1] = Yes, [Anything else] = No")
-        restart = input(" -> ")
-        if restart == "1":
-            main() #Restart
-        else:
-            print("Ok. Quitting...")
-            t.sleep(2)
-            quit()
+        print("You tied with the computer. You both picked [" + option[playerC-1] + "]")
+    print("[1] = Yes, [Anything else] = No")
+    restart = input(" -> ")
+    if restart == "1":
+        main()
+    else:
+        print("Ok. Quitting...")
+        t.sleep(2)
+        quit()
 main() #Start for the first time.
